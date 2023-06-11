@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import React from 'react';
-import { RadioGroupState, useRadioGroupState } from 'react-stately';
-import { AriaRadioGroupProps, AriaRadioProps, useRadio, useRadioGroup } from 'react-aria';
+import React from "react";
+import { RadioGroupState, useRadioGroupState } from "react-stately";
+import { AriaRadioGroupProps, AriaRadioProps, useRadio, useRadioGroup } from "react-aria";
+import { classnames } from "@/utils/classnames";
 
-import styles from './RadioGroup.module.css';
-import { classnames } from '@/utils/classnames';
+import styles from "./RadioGroup.module.css";
 
 const RadioContext = React.createContext<RadioGroupState>(null as unknown as RadioGroupState);
 
 interface RadioGroupProps extends AriaRadioGroupProps {
-    children?: React.ReactNode,
+    children?: React.ReactNode;
 }
 
 export function RadioGroup(props: RadioGroupProps) {
@@ -20,21 +20,22 @@ export function RadioGroup(props: RadioGroupProps) {
 
     return (
         <div {...radioGroupProps} className={styles.radioGroupContainer}>
-            <div {...labelProps} className={styles.radioGroupLabel}>{label}</div>
+            <div {...labelProps} className={styles.radioGroupLabel}>
+                {label}
+            </div>
             <div className={styles.radioInputsContainer}>
-                <RadioContext.Provider value={state}>
-                    {children}
-                </RadioContext.Provider>
+                <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
             </div>
             {description && (
-                <div {...descriptionProps} style={{ fontSize: 12 }}>{description}</div>
+                <div {...descriptionProps} style={{ fontSize: 12 }}>
+                    {description}
+                </div>
             )}
-            {errorMessage && validationState === 'invalid' &&
-                (
-                    <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
-                        {errorMessage}
-                    </div>
-                )}
+            {errorMessage && validationState === "invalid" && (
+                <div {...errorMessageProps} style={{ color: "red", fontSize: 12 }}>
+                    {errorMessage}
+                </div>
+            )}
         </div>
     );
 }
@@ -47,7 +48,7 @@ export function Radio({ children, ...props }: AriaRadioProps) {
     const classes = classnames({
         [styles.radioLabel]: true,
         [styles.radioLabelSelected]: state.selectedValue === props.value,
-    })
+    });
 
     return (
         <label className={classes}>

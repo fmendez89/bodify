@@ -1,53 +1,53 @@
 "use client";
 
-import React from 'react';
-import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately';
-import { AriaCheckboxGroupItemProps, AriaCheckboxGroupProps, useCheckboxGroup, useCheckboxGroupItem } from 'react-aria';
+import React from "react";
+import { CheckboxGroupState, useCheckboxGroupState } from "react-stately";
+import { AriaCheckboxGroupItemProps, AriaCheckboxGroupProps, useCheckboxGroup, useCheckboxGroupItem } from "react-aria";
+import { classnames } from "@/utils/classnames";
 
-import styles from './CheckboxGroup.module.css';
-import { classnames } from '@/utils/classnames';
+import styles from "./CheckboxGroup.module.css";
 
-let CheckboxGroupContext = React.createContext(null as unknown as CheckboxGroupState);
+const CheckboxGroupContext = React.createContext(null as unknown as CheckboxGroupState);
 
 interface CheckboxGroupProps extends AriaCheckboxGroupProps {
-    children?: React.ReactNode,
+    children?: React.ReactNode;
 }
 
 export function CheckboxGroup(props: CheckboxGroupProps) {
-    let { children, label, description, errorMessage, validationState } = props;
-    let state = useCheckboxGroupState(props);
-    let { groupProps, labelProps, descriptionProps, errorMessageProps } =
-        useCheckboxGroup(props, state);
+    const { children, label, description, errorMessage, validationState } = props;
+    const state = useCheckboxGroupState(props);
+    const { groupProps, labelProps, descriptionProps, errorMessageProps } = useCheckboxGroup(props, state);
 
     return (
         <div {...groupProps} className={styles.checkboxGroupContainer}>
-            <div {...labelProps} className={styles.checkboxGroupLabel}>{label}</div>
+            <div {...labelProps} className={styles.checkboxGroupLabel}>
+                {label}
+            </div>
             <div className={styles.checkboxInputsContainer}>
-                <CheckboxGroupContext.Provider value={state}>
-                    {children}
-                </CheckboxGroupContext.Provider>
+                <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
             </div>
             {description && (
-                <div {...descriptionProps} style={{ fontSize: 12 }}>{description}</div>
+                <div {...descriptionProps} style={{ fontSize: 12 }}>
+                    {description}
+                </div>
             )}
-            {errorMessage && validationState === 'invalid' &&
-                (
-                    <div {...errorMessageProps} style={{ color: 'red', fontSize: 12 }}>
-                        {errorMessage}
-                    </div>
-                )}
+            {errorMessage && validationState === "invalid" && (
+                <div {...errorMessageProps} style={{ color: "red", fontSize: 12 }}>
+                    {errorMessage}
+                </div>
+            )}
         </div>
     );
 }
 
 export function Checkbox(props: AriaCheckboxGroupItemProps) {
-    let { children } = props;
-    let state = React.useContext(CheckboxGroupContext);
-    let ref = React.useRef(null);
-    let { inputProps } = useCheckboxGroupItem(props, state, ref);
+    const { children } = props;
+    const state = React.useContext(CheckboxGroupContext);
+    const ref = React.useRef(null);
+    const { inputProps } = useCheckboxGroupItem(props, state, ref);
 
-    let isDisabled = state.isDisabled || props.isDisabled || false;
-    let isSelected = state.isSelected(props.value);
+    const isDisabled = state.isDisabled || props.isDisabled || false;
+    const isSelected = state.isSelected(props.value);
 
     const classes = classnames({
         [styles.checkboxLabel]: true,
@@ -64,13 +64,13 @@ export function Checkbox(props: AriaCheckboxGroupItemProps) {
 }
 
 export function CheckboxProvince(props: AriaCheckboxGroupItemProps) {
-    let { children } = props;
-    let state = React.useContext(CheckboxGroupContext);
-    let ref = React.useRef(null);
-    let { inputProps } = useCheckboxGroupItem(props, state, ref);
+    const { children } = props;
+    const state = React.useContext(CheckboxGroupContext);
+    const ref = React.useRef(null);
+    const { inputProps } = useCheckboxGroupItem(props, state, ref);
 
-    let isDisabled = state.isDisabled || props.isDisabled || false;
-    let isSelected = state.isSelected(props.value);
+    const isDisabled = state.isDisabled || props.isDisabled || false;
+    const isSelected = state.isSelected(props.value);
 
     const classes = classnames({
         [styles.checkboxLabel]: true,

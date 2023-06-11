@@ -97,6 +97,7 @@
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
         "no-nested-ternary": "off",
-        "react/button-has-type": "off"
+        "react/button-has-type": "off",
+        "jsx-a11y/label-has-associated-control": "off"
     }
 }

@@ -1,9 +1,14 @@
 import Link from "next/link";
-import styles from "./Navbar.module.css";
 import { Berkshire_Swash } from "next/font/google";
-import { classnames } from "@/utils/classnames";7
+import { classnames } from "@/utils/classnames";
+import styles from "./Navbar.module.css";
 
-const font = Berkshire_Swash({ subsets: ["latin"], weight: ["400"], variable: "--font-dancing-script", display: "swap" });
+const font = Berkshire_Swash({
+    subsets: ["latin"],
+    weight: ["400"],
+    variable: "--font-dancing-script",
+    display: "swap",
+});
 
 const Navbar = () => (
     <div className={styles.navbar}>
@@ -20,7 +25,7 @@ const Navbar = () => (
                             {/* <Link className={styles.tagLink} href="/pricing">
                                 <div>Pricing</div>
                             </Link> */}
-                            <span></span>
+                            <span> </span>
                         </div>
                         <div className={styles.actionsRight}>
                             <Link className={styles.tagLink} href="#planes">

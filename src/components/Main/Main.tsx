@@ -5,10 +5,10 @@ import styles from "./Main.module.css";
 
 const Main = () => (
     <main className={styles.main}>
-            <HeroSection />
-            <PlanSection />
-            Sección testimonios
-            <UsSection />
+        <HeroSection />
+        <PlanSection />
+        Sección testimonios
+        <UsSection />
     </main>
 );
 

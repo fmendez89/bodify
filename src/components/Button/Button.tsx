@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { AriaButtonProps, useButton } from "react-aria";
 import React from "react";
 
