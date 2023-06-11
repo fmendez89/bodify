@@ -1,0 +1,62 @@
+.checkboxGroupContainer{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.checkboxGroupLabel{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.checkboxInputsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    flex-wrap: wrap;
+    row-gap: 30px;
+    column-gap: 20px;
+}
+
+.checkboxLabel {
+    display: block;
+    width: 150px;
+    height: 100px;
+    border-radius: 6px;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkboxLabel {
+    display: block;
+    width: 150px;
+    height: 100px;
+    border-radius: 6px;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkboxLabelProvince {
+    position: relative;
+    overflow: hidden;
+}
+
+.checkboxLabelSelected {
+    border-color: var(--color-dark);
+    background-color: var(--color-base);
+}
+
+.checkboxLabel input {
+    display: none;
+}
+
+.checkboxLabelDisabled {
+    opacity: 0.4;
+}

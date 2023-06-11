@@ -1,0 +1,25 @@
+.section {
+    grid-column: span 12;
+}
+
+@media screen and (min-width: 942px) {
+    .section {
+        grid-column: span 12;
+    }
+}
+
+@media screen and (min-width: 712px) {
+    .section {
+        grid-column: span 12;
+    }
+}
+
+.sectionRoot {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    row-gap: 30px;
+}

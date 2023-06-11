@@ -1,0 +1,61 @@
+.section > .title {
+    font-family: var(--font-dancing-script);
+  }
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.image > img {
+    object-fit: contain;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+    .section {
+        text-align: center;
+    }
+    
+    .section > .title {
+        text-align: center;
+        font-size: 4rem;
+    }
+  
+    .section > .content {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+    
+    .section > .button {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Estilos para escritorios */
+@media (min-width: 768px) {
+  .section {
+    
+  }
+  
+  .section > .title {
+    font-size: 4rem;
+  }
+
+  .section > .content {
+    font-size: 1.25rem;
+  }
+  
+  .section > .button {
+    
+  }
+}
+
+.content {
+
+}

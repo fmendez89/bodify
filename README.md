@@ -1,0 +1,14 @@
+## TODO 
+ - Retreive as many pages as you can
+ - Change selected database
+ - ¿Join databases? -> doable with Notion itself
+ - Multi charts (¿dashboars?)
+ - Multi columns
+    - Stacked bars, linesl
+ - Sorting by column
+ - Chart customization
+    - Labels (title, axis)
+    - Background color
+    - Timezone
+    - Colors
+ - Data filters

@@ -1,0 +1,19 @@
+.section {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.sectionRoot {
+    
+}
+
+.header {
+    font-family: var(--font-dancing-script);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formContainer {
+    
+}

@@ -1,0 +1,102 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "extends": [
+        "next/core-web-vitals",
+        "airbnb",
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "prettier",
+        "plugin:react/jsx-runtime",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins": ["@typescript-eslint", "react", "jsx-a11y", "prettier"],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "ignorePatterns": "*.config.ts",
+    "rules": {
+        "import/extensions": ["error", "never", { "svg": "always" }],
+        "func-names": ["error", "as-needed"],
+        "arrow-body-style": ["error", "as-needed"],
+        "object-curly-spacing": ["warn", "always"],
+        "no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "args": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "args": "none",
+                "ignoreRestSiblings": true
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": [
+            "error",
+            {
+                "ignoreRestArgs": true
+            }
+        ],
+        "max-len": [
+            "warn",
+            {
+                "code": 120,
+                "ignoreStrings": true,
+                "ignoreTemplateLiterals": true,
+                "ignoreComments": true
+            }
+        ],
+        "no-plusplus": [
+            "error",
+            {
+                "allowForLoopAfterthoughts": true
+            }
+        ],
+        "react/jsx-key": "error",
+        "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx", "src/tests/**/*"]
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/function-component-definition": "off",
+        "react/jsx-boolean-value": "off",
+        "react/prop-types": "off",
+        "react/no-unescaped-entities": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-wrap-multilines": "off",
+        "react/destructuring-assignment": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/static-property-placement": ["error", "static public field"],
+        "react/require-default-props": [
+            "error",
+            {
+                "forbidDefaultForRequired": false,
+                "ignoreFunctionalComponents": true
+            }
+        ],
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "no-nested-ternary": "off",
+        "react/button-has-type": "off"
+    }
+}
