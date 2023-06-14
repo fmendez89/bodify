@@ -1,5 +1,6 @@
 .slider {
     display: flex;
+    margin-bottom: 40px;
 }
 
 .slider.horizontal {
@@ -14,6 +15,15 @@
 .labelContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.labelContainer > label{
+    font-weight: 600;
+}
+
+.labelContainer > output{
+    margin-left: 40px;
 }
 
 .slider.horizontal .track {

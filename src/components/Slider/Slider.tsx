@@ -50,6 +50,7 @@ function Thumb(props: ThumbProps) {
 
 interface SliderProps extends AriaSliderProps<number | number[]> {
     formatOptions?: Intl.NumberFormatOptions;
+    postLabel?: string;
 }
 
 export function Slider(props: SliderProps) {
@@ -76,7 +77,10 @@ export function Slider(props: SliderProps) {
             {props.label && (
                 <div className={styles.labelContainer}>
                     <label {...labelProps}>{props.label}</label>
-                    <output {...outputProps}>{state.getThumbValueLabel(0)}</output>
+                    <output {...outputProps}>
+                        {state.getThumbValueLabel(0)}
+                        {props.postLabel}
+                    </output>
                 </div>
             )}
             <div {...trackProps} ref={trackRef} className={trackClasses}>

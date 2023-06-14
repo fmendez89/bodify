@@ -63,20 +63,20 @@ const PlanForm = () => {
     return (
         <div className={styles.formContainer}>
             <div className={styles.sliderContainer}>
-                <CheckboxGroup label="¿Dónde te quieres casar?">
+                <CheckboxGroup label="¿Dónde te gustaría casarte? (elige mínimo 2 posibilidades)">
                     {provinces.slice(0, 10).map((province) => (
                         <Province key={province.name} name={province.name} normalized={province.normalized} />
                     ))}
                 </CheckboxGroup>
                 <Slider
-                    label="Cantidad de personas"
+                    label="¿Cuál sería el número aproximado de invitados?"
                     minValue={50}
                     maxValue={500}
                     step={50}
                     defaultValue={100}
                     onChange={(value) => handleSetPlan({ ...planRef.current, people: value as unknown as number })}
                 />
-                <RadioGroup label="¿Invitado principal?" defaultValue="adult">
+                <RadioGroup label="¿Qué rango de edad tendría la mayoría de invitados?" defaultValue="adult">
                     <Radio value="child">
                         <div className={styles.radioContainer}>
                             <div>
@@ -111,14 +111,15 @@ const PlanForm = () => {
                     </Radio>
                 </RadioGroup>
                 <Slider
-                    label="Precio"
+                    label="¿Cuál sería el precio del menú por persona que tienes pensado?"
                     minValue={50}
                     maxValue={500}
                     step={50}
                     defaultValue={100}
                     onChange={(value) => handleSetPlan({ ...planRef.current, price: value as unknown as number })}
+                    postLabel="€"
                 />
-                <RadioGroup label="¿Comida o cena?" defaultValue="dinner">
+                <RadioGroup label="¿El convite sería comida o cena?" defaultValue="dinner">
                     <Radio value="lunch">
                         <div className={styles.radioContainer}>
                             <div>
@@ -142,7 +143,7 @@ const PlanForm = () => {
                         </div>
                     </Radio>
                 </RadioGroup>
-                <CheckboxGroup label="¿Qué lugar sería ideal?">
+                <CheckboxGroup label="¿Dónde te gustaría que fuese el convite?">
                     <Checkbox value="city">
                         <div className={styles.radioContainer}>
                             <div>
@@ -192,7 +193,7 @@ const PlanForm = () => {
                         </div>
                     </Checkbox>
                 </CheckboxGroup>
-                <CheckboxGroup label="¿Qué es imprescindible para ti?">
+                <CheckboxGroup label="¿Qué extra sería imprescindible para ti?">
                     <Checkbox value="terrace">
                         <div className={styles.radioContainer}>
                             <div>

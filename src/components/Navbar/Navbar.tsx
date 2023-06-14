@@ -22,9 +22,6 @@ const Navbar = () => (
                 <div className={styles.desktopActions}>
                     <nav className={styles.desktopActionsNav}>
                         <div className={styles.actionsLeft}>
-                            {/* <Link className={styles.tagLink} href="/pricing">
-                                <div>Pricing</div>
-                            </Link> */}
                             <span> </span>
                         </div>
                         <div className={styles.actionsRight}>
