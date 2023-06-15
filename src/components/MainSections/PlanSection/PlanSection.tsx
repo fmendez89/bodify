@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Button from "@/components/Button/Button";
 import Image from "next/image";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { useAnimation, motion, Variants, useInView, useScroll, useTransform } from "framer-motion";
 import { Oooh_Baby } from "next/font/google";
+import Link from "next/link";
 import styles from "./PlanSection.module.css";
 
 const dancigScript = Oooh_Baby({
@@ -62,7 +62,7 @@ const HeroSection = () => {
     }, [controls, inView]);
 
     return (
-        <div ref={ref}>
+        <div ref={ref} style={{ marginBottom: "40px" }}>
             <Grid fluid className={dancigScript.variable}>
                 <Row>
                     <Col xs={12} sm={12} md={5} lg={5}>
@@ -73,7 +73,7 @@ const HeroSection = () => {
                             initial="hidden"
                             variants={imageAnimation}
                         >
-                            <Image src="/images/hero.jpg" alt="Hero" fill />
+                            <Image src="/images/landing/four.jpg" alt="Hero" fill />
                         </motion.div>
                     </Col>
                     <Col xs={12} sm={12} md={7} lg={7}>
@@ -84,15 +84,20 @@ const HeroSection = () => {
                             variants={textContainer}
                         >
                             <motion.h1 variants={textItem} className={styles.title}>
-                                Ya tenemos tu plan de boda
+                                Tu plan de boda
                             </motion.h1>
                             <motion.p variants={textItem} className={styles.content}>
-                                Te proponemos los mejores planes de boda con los mejores proveedores. Tienes a tu
-                                alcance más de 50.000 proveedores para crear una experiencia única para vosotros y
-                                vuestros invitados.
+                                En Carla te casa ponemos a tu disposición el mejor equipo humano, tecnología e
+                                inteligencia artificial que nos permite proponerte posibilidades acordes a tus gustos,
+                                presupuesto y necesidades en menos de 5 minutos (y de manera totalmente gratuita). A
+                                partir de ahí trabajaremos de manera conjunta para conoceros mejor y continuar
+                                presentando opciones para convertir en realidad vuestros deseos y organizar el que será
+                                el mejor día de vuestras vidas.
                             </motion.p>
                             <motion.div variants={textItem} className={styles.button}>
-                                <Button>Crea tu plan ahora</Button>
+                                <Link className={styles.cta} href="/crea-tu-plan">
+                                    <div>Crea tu plan ahora</div>
+                                </Link>
                             </motion.div>
                         </motion.div>
                     </Col>

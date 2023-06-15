@@ -23,7 +23,7 @@
     
     .section > .title {
         text-align: center;
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
   
     .section > .content {
@@ -58,4 +58,30 @@
 
 .content {
 
+}
+
+
+.cta {
+  display: inline;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 0;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  color: var(--text-color-white);
+  background-color: var(--color-light-med);
+}
+
+.cta>div {
+  display: inline-block;
+  text-align: center;
+}
+
+.cta:hover {
+  background-color: var(--color-dark);
+  outline: none;
+  transition: none;
 }

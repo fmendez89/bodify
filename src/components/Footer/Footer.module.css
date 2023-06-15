@@ -1,4 +1,5 @@
 .footer {
+    margin-top: 60px;
     display: block;
     background-color: var(--color-base);
 }

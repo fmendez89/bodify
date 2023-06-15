@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import Button from "@/components/Button/Button";
 import Image from "next/image";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { useAnimation, motion, Variants, useInView, useScroll, useTransform } from "framer-motion";
 import { Oooh_Baby } from "next/font/google";
+import Link from "next/link";
 import styles from "./HeroSection.module.css";
 
 const dancigScript = Oooh_Baby({
@@ -60,7 +60,7 @@ const HeroSection = () => {
     }, [controls, inView]);
 
     return (
-        <div ref={ref}>
+        <div ref={ref} style={{ marginBottom: "40px" }}>
             <Grid fluid className={dancigScript.variable}>
                 <Row>
                     <Col xs={12} sm={12} md={6} lg={6}>
@@ -71,14 +71,15 @@ const HeroSection = () => {
                             variants={textContainer}
                         >
                             <motion.h1 variants={textItem} className={styles.title}>
-                                El sueño de tu boda hecho realidad
+                                Nos dedicamos a organizar el mejor día de vuestras vidas
                             </motion.h1>
                             <motion.p variants={textItem} className={styles.content}>
-                                Somos expertos en hacer de tu boda un recuerdo que atesorarás por siempre. Organizamos
-                                cada detalle para que disfrutes de cada momento junto a tus seres queridos.
+                                Sin estrés, sin prisas y sin preocupaciones
                             </motion.p>
                             <motion.div variants={textItem} className={styles.button}>
-                                <Button>Crea tu plan</Button>
+                                <Link className={styles.cta} href="/crea-tu-plan">
+                                    <div>Crea tu plan ahora</div>
+                                </Link>
                             </motion.div>
                         </motion.div>
                     </Col>
@@ -90,7 +91,7 @@ const HeroSection = () => {
                             initial="hidden"
                             variants={imageAnimation}
                         >
-                            <Image src="/images/hero.jpg" alt="Hero" fill />
+                            <Image src="/images/landing/three.jpg" alt="Hero" fill />
                         </motion.div>
                     </Col>
                 </Row>

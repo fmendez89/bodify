@@ -61,7 +61,7 @@ const UsSection = () => {
     }, [controls, inView]);
 
     return (
-        <div ref={ref}>
+        <div ref={ref} style={{ marginBottom: "40px" }}>
             <Grid fluid className={dancigScript.variable}>
                 <Row>
                     <Col xs={12} sm={12} md={7} lg={7}>
@@ -72,13 +72,16 @@ const UsSection = () => {
                             variants={textContainer}
                         >
                             <motion.h1 variants={textItem} className={styles.title}>
-                                Nosotros, vosotros
+                                Acerca de nosotros
                             </motion.h1>
                             <motion.p variants={textItem} className={styles.content}>
-                                Somos organizadores de bodas profesionales con años de experiencia garantizando
-                                resultados extraordinarios. Trabajamos para superar las expectativas de nuestras parejas
-                                y convertir su visión de la boda perfecta en realidad. Nos encargamos de cuidar cada
-                                detalle del gran día para que los novios puedan disfrutar plenamente de su celebración.
+                                En Carla te casa damos una nueva visión a la organización de las bodas. Observamos que
+                                los costes de contratar una wedding planner eran muy altos y que, además, no podías
+                                conocer nada del proceso sin realizar el primer pago. Con nuestra herramienta de
+                                inteligencia artificial conseguimos enviar a los novios propuestas totalmente adaptadas
+                                a sus ideas y necesidades de manera gratuita y rápida. A partir de ahí, y una vez que
+                                están convencidos de que el plan puede ser tal y como lo habían imaginado, y dentro de
+                                su presupuesto, comenzamos a realizar el trabajo para convertirlo en realidad.
                             </motion.p>
                         </motion.div>
                     </Col>
@@ -90,7 +93,7 @@ const UsSection = () => {
                             initial="hidden"
                             variants={imageAnimation}
                         >
-                            <Image src="/images/hero.jpg" alt="Hero" fill />
+                            <Image src="/images/landing/one.jpg" alt="Hero" fill />
                         </motion.div>
                     </Col>
                 </Row>
