@@ -80,6 +80,7 @@ export function Slider(props: SliderProps) {
                     <output {...outputProps}>
                         {state.getThumbValueLabel(0)}
                         {props.postLabel}
+                        {state.values[0] === props.maxValue ? "+" : null}
                     </output>
                 </div>
             )}

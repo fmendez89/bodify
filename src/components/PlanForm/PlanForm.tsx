@@ -13,6 +13,8 @@ type PlanType = "dinner" | "lunch" | "both";
 
 type GuestType = "adult" | "child" | "young" | "senior";
 
+type SeasonType = "winter" | "spring" | "summer" | "autumn";
+
 type LocationType = "city" | "citySurroundings" | "mountain" | "beach" | "countryside" | "nearFromSea";
 
 type OtherServiceType =
@@ -35,7 +37,7 @@ type Plan = {
     mainGuest: GuestType;
     price: number;
     location: LocationType[];
-    month: number;
+    season: SeasonType;
     type: PlanType;
     otherServices: OtherServiceType[];
 };
@@ -48,7 +50,7 @@ const DefaulPlan: Plan = {
     mainGuest: "adult",
     price: 100,
     location: [],
-    month: 1,
+    season: "spring",
     type: "dinner",
     otherServices: [],
 };
@@ -68,10 +70,44 @@ const PlanForm = () => {
                         <Province key={province.name} name={province.name} normalized={province.normalized} />
                     ))}
                 </CheckboxGroup>
+                <RadioGroup label="¿Cuándo te gustaría casarte?" defaultValue="spring">
+                    <Radio value="spring">
+                        <div className={styles.radioContainer}>
+                            <div>
+                                <Image src="/images/icons/spring.png" alt="spring" width={50} height={50} />
+                            </div>
+                            <div>Primavera</div>
+                        </div>
+                    </Radio>
+                    <Radio value="summer">
+                        <div className={styles.radioContainer}>
+                            <div>
+                                <Image src="/images/icons/summer.png" alt="dinner" width={50} height={50} />
+                            </div>
+                            <div>Verano</div>
+                        </div>
+                    </Radio>
+                    <Radio value="autumn">
+                        <div className={styles.radioContainer}>
+                            <div>
+                                <Image src="/images/icons/autumn.png" alt="dinner" width={50} height={50} />
+                            </div>
+                            <div>Otoño</div>
+                        </div>
+                    </Radio>
+                    <Radio value="winter">
+                        <div className={styles.radioContainer}>
+                            <div>
+                                <Image src="/images/icons/winter.png" alt="winter" width={50} height={50} />
+                            </div>
+                            <div>Invierno</div>
+                        </div>
+                    </Radio>
+                </RadioGroup>
                 <Slider
                     label="¿Cuál sería el número aproximado de invitados?"
                     minValue={50}
-                    maxValue={500}
+                    maxValue={300}
                     step={50}
                     defaultValue={100}
                     onChange={(value) => handleSetPlan({ ...planRef.current, people: value as unknown as number })}
@@ -113,7 +149,7 @@ const PlanForm = () => {
                 <Slider
                     label="¿Cuál sería el precio del menú por persona que tienes pensado?"
                     minValue={50}
-                    maxValue={500}
+                    maxValue={250}
                     step={50}
                     defaultValue={100}
                     onChange={(value) => handleSetPlan({ ...planRef.current, price: value as unknown as number })}
