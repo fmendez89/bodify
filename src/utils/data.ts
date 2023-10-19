@@ -55,7 +55,7 @@ export const provinces = [
         population: 1139287,
     },
     {
-        normalized: "la-coruna",
+        normalized: "a-coruna",
         name: "La Coruña",
         population: 1117147,
     },
@@ -95,8 +95,8 @@ export const provinces = [
         population: 800703,
     },
     {
-        normalized: "gerona",
-        name: "Gerona",
+        normalized: "girona",
+        name: "Girona",
         population: 762895,
     },
     {
@@ -160,8 +160,8 @@ export const provinces = [
         population: 470493,
     },
     {
-        normalized: "lerida",
-        name: "Lérida",
+        normalized: "lleida",
+        name: "Lleida",
         population: 439253,
     },
     {
@@ -260,3 +260,5 @@ export const provinces = [
         population: 84777,
     },
 ];
+
+export const normalizedProviceNames = provinces.map((province) => province.normalized);

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Button from "@/components/Button/Button";
 import Image from "next/image";
 import { Grid, Row, Col } from "react-flexbox-grid";
 import { useAnimation, motion, Variants, useInView, useScroll, useTransform } from "framer-motion";

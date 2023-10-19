@@ -8,8 +8,10 @@ import Province from "../Province/Province";
 import { RadioGroup, Radio } from "../RadioGroup/RadioGroup";
 import { CheckboxGroup, Checkbox } from "../CheckboxGroup/CheckboxGroup";
 import styles from "./PlanForm.module.css";
+import TextField from "../TextField/TextField";
+import Button from "../Button/Button";
 
-type PlanType = "dinner" | "lunch" | "both";
+type MealType = "dinner" | "lunch" | "both";
 
 type GuestType = "adult" | "child" | "young" | "senior";
 
@@ -31,46 +33,69 @@ type OtherServiceType =
 
 type Plan = {
     name: string;
+    mail: string;
     phone: string;
-    state: string[];
+    states: string[];
     people: number;
-    mainGuest: GuestType;
+    age: GuestType;
     price: number;
     location: LocationType[];
     season: SeasonType;
-    type: PlanType;
-    otherServices: OtherServiceType[];
+    meal: MealType;
+    other: OtherServiceType[];
 };
 
 const DefaulPlan: Plan = {
     name: "",
+    mail: "",
     phone: "",
-    state: [],
-    people: 50,
-    mainGuest: "adult",
-    price: 100,
+    states: [],
+    people: 100,
+    age: "adult",
+    price: 150,
     location: [],
     season: "spring",
-    type: "dinner",
-    otherServices: [],
+    meal: "dinner",
+    other: [],
 };
 
 const PlanForm = () => {
     const planRef = React.useRef<Plan>(DefaulPlan);
 
-    const handleSetPlan = React.useCallback((planToset: Plan) => {
-        planRef.current = planToset;
+    function handleSetPlan<T>(key: keyof Plan, val: T) {
+        (planRef.current[key] as T) = val;
+    }
+
+    const handleSubmit = React.useCallback(async () => {
+        try {
+            const res = await fetch("/api/form", {
+                method: "POST",
+                body: JSON.stringify(planRef.current),
+            });
+
+            const data = await res.json();
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
     }, []);
 
     return (
         <div className={styles.formContainer}>
             <div className={styles.sliderContainer}>
-                <CheckboxGroup label="¿Dónde te gustaría casarte? (elige mínimo 2 posibilidades)">
+                <CheckboxGroup
+                    label="¿Dónde te gustaría casarte? (elige mínimo 2 posibilidades)"
+                    onChange={(value) => handleSetPlan("states", value)}
+                >
                     {provinces.slice(0, 10).map((province) => (
                         <Province key={province.name} name={province.name} normalized={province.normalized} />
                     ))}
                 </CheckboxGroup>
-                <RadioGroup label="¿Cuándo te gustaría casarte?" defaultValue="spring">
+                <RadioGroup
+                    label="¿Cuándo te gustaría casarte?"
+                    defaultValue={DefaulPlan.season}
+                    onChange={(value) => handleSetPlan("season", value)}
+                >
                     <Radio value="spring">
                         <div className={styles.radioContainer}>
                             <div>
@@ -109,10 +134,14 @@ const PlanForm = () => {
                     minValue={50}
                     maxValue={300}
                     step={50}
-                    defaultValue={100}
-                    onChange={(value) => handleSetPlan({ ...planRef.current, people: value as unknown as number })}
+                    defaultValue={DefaulPlan.people}
+                    onChange={(value) => handleSetPlan("people", value)}
                 />
-                <RadioGroup label="¿Qué rango de edad tendría la mayoría de invitados?" defaultValue="adult">
+                <RadioGroup
+                    label="¿Qué rango de edad tendría la mayoría de invitados?"
+                    defaultValue={DefaulPlan.age}
+                    onChange={(value) => handleSetPlan("age", value)}
+                >
                     <Radio value="child">
                         <div className={styles.radioContainer}>
                             <div>
@@ -151,11 +180,15 @@ const PlanForm = () => {
                     minValue={50}
                     maxValue={250}
                     step={50}
-                    defaultValue={100}
-                    onChange={(value) => handleSetPlan({ ...planRef.current, price: value as unknown as number })}
+                    defaultValue={DefaulPlan.price}
+                    onChange={(value) => handleSetPlan("price", value)}
                     postLabel="€"
                 />
-                <RadioGroup label="¿El convite sería comida o cena?" defaultValue="dinner">
+                <RadioGroup
+                    label="¿El convite sería comida o cena?"
+                    defaultValue={DefaulPlan.meal}
+                    onChange={(value) => handleSetPlan("meal", value)}
+                >
                     <Radio value="lunch">
                         <div className={styles.radioContainer}>
                             <div>
@@ -179,7 +212,10 @@ const PlanForm = () => {
                         </div>
                     </Radio>
                 </RadioGroup>
-                <CheckboxGroup label="¿Dónde te gustaría que fuese el convite?">
+                <CheckboxGroup
+                    label="¿Dónde te gustaría que fuese el convite?"
+                    onChange={(value) => handleSetPlan("location", value)}
+                >
                     <Checkbox value="city">
                         <div className={styles.radioContainer}>
                             <div>
@@ -229,7 +265,10 @@ const PlanForm = () => {
                         </div>
                     </Checkbox>
                 </CheckboxGroup>
-                <CheckboxGroup label="¿Qué extra sería imprescindible para ti?">
+                <CheckboxGroup
+                    label="¿Qué extra sería imprescindible para ti?"
+                    onChange={(value) => handleSetPlan("other", value)}
+                >
                     <Checkbox value="terrace">
                         <div className={styles.radioContainer}>
                             <div>
@@ -311,6 +350,26 @@ const PlanForm = () => {
                         </div>
                     </Checkbox>
                 </CheckboxGroup>
+                <div>
+                    <TextField
+                        label="Nombre"
+                        defaultValue={DefaulPlan.name}
+                        onChange={(val) => handleSetPlan("name", val)}
+                    />
+                    <TextField
+                        label="Correo"
+                        defaultValue={DefaulPlan.mail}
+                        onChange={(val) => handleSetPlan("mail", val)}
+                    />
+                    <TextField
+                        label="Teléfono"
+                        defaultValue={DefaulPlan.phone}
+                        onChange={(val) => handleSetPlan("phone", val)}
+                    />
+                </div>
+                <div>
+                    <Button onPress={handleSubmit}>Enviar</Button>
+                </div>
             </div>
         </div>
     );

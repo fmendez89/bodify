@@ -1,6 +1,3 @@
-import "server-only";
-
-import SupabaseProvider from "@/contexts/SupabaseClientContext";
 import { ClientProviders } from "@/components/ClientProviders/ClientProviders";
 
 import "normalize.css/normalize.css";
@@ -33,11 +30,9 @@ export const metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <SupabaseProvider>
-            <ClientProviders>
-                <head />
-                <body>{children}</body>
-            </ClientProviders>
-        </SupabaseProvider>
+        <ClientProviders>
+            <head />
+            <body>{children}</body>
+        </ClientProviders>
     );
 }
